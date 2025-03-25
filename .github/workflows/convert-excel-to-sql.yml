@@ -1,0 +1,29 @@
+name: Convert Excel to SQL Database
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Messy_Sales_Data_Tredify.xlsx'  # This triggers the action when the file changes
+
+jobs:
+  convert_to_sql:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install pandas sqlalchemy openpyxl
+
+    - name: Run Python script to convert Excel to SQL
+      run: |
+        python convert_excel_to_sql.py
