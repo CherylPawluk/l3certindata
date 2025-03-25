@@ -1,0 +1,3 @@
+git add .github/workflows/convert-excel-to-sql.yml convert_excel_to_sql.py
+git commit -m "Add workflow to convert Excel to SQL database"
+git push origin main
